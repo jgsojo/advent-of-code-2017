@@ -17,8 +17,6 @@ const input = [
     "1763 464 182 1932 1209 640 545 931 1979 197 1774 174 2074 1800 939 161"
 ];
 
-getChecksum(input); // 36766
-
 /**
  * Main function, resolves the checksum for the input data
  * 
@@ -68,3 +66,5 @@ function getMinMaxValue(numbers) {
 			max: current > accumulator.max ? current : accumulator.max
 	}), {min: Infinity, max: -Infinity});
 }
+
+console.log(getChecksum(input)); // 36766
