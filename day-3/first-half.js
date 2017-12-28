@@ -15,27 +15,16 @@ function calculateSteps(input) {
 /**
  * Returns the coordinates of a specific number in the Spiral memory
  * 
- * @param {Number} input input data
- * @returns {MemoryPosition} object with coordinates {x, y}
+ * @param {Number} limit input data
+ * @returns {MemoryPosition} object with the info of the memory position
  */
-function getMemoryPosition(input) {
-    let memorySpiral = generateSpiralMemory(input);
-    return memorySpiral[input - 1];
-}
-
-/**
- * Generates a memory spiral until the limit is reached
- * 
- * @param {Number} limit the last item of memory we want to create
- * @returns {Array[Object]}
- */
-function generateSpiralMemory(limit) {
-    limit = limit - 1 || 0;
-    let result = [new MemoryPosition()];
-    for (let i = 0; i < limit; i++) {
-        result.push(result[i].next());
+function getMemoryPosition(limit) {
+    limit = limit || 1;
+    let memoryPosition = new MemoryPosition(new Map());
+    while (memoryPosition.value < limit) {
+        memoryPosition = memoryPosition.next();
     }
-    return result;
+    return memoryPosition;
 }
 
 console.log(calculateSteps(input)); // 430
